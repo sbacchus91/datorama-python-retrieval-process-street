@@ -40,7 +40,6 @@ df = pd.DataFrame()
 df['Template_ID']  = b_list
 df['Tag_Name'] = a_list
 
-
-
+#  Turn Dataframe into csv for Datorama ingestion
 csv_string = df.to_csv()
 datorama.save_csv(csv_string)
