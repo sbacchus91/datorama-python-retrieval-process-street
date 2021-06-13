@@ -22,6 +22,9 @@ for x in id_list:
 
 res = [ele for ele in tags if ele != []]
 
+#  Each line will have a column per Tag + Template combination
+#  Loop through each line, and each column, and append Tag Name and Template ID to respective lists
+
 a_list = []
 b_list = []
 for x in res:
