@@ -7,12 +7,14 @@ headers = {
     'X-API-KEY': 'ADD API KEY HERE',
 }
 
+#  Get a list of Template IDs
 templates_response = requests.get('https://public-api.process.st/templates', headers=headers, params={'limit':500})
 templates_response_json = templates_response.json()
 templates_df = pd.DataFrame(templates_response_json['data'])
 id_list = templates_df["id"].tolist()
 
 
+#  Loop through Tag endpoint with Template ID list as input
 tags = []
 for x in id_list:
     API_URL = "https://app.process.st/api/1/tag-memberships?templateId={}&v=4".format(x)
@@ -32,6 +34,8 @@ for x in res:
         a_list.append(line['tag']['name'])
         b_list.append(line['template']['id'])
 
+ 
+#  Use Pandas to join our 2 lists
 df = pd.DataFrame()
 df['Template_ID']  = b_list
 df['Tag_Name'] = a_list
